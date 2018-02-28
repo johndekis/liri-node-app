@@ -38,7 +38,7 @@ function getTweets() {
             var time = tweets[i].created_at;
             var timeFix = time.split(' ').slice(0,4).join(' ') + "\n";
 
-            var tweetResults = "\n' " + tweets[i].text + " '  " + "\n--" + tweets[i].user.screen_name + ", " + timeFix;
+            var tweetResults = "\n  '" + tweets[i].text + " '  " + "\n  --" + tweets[i].user.screen_name + ", " + timeFix;
             
             
             console.log(tweetResults);
@@ -63,7 +63,7 @@ function getSong(song) {
     var songName = '';
     //if no song is specified default ====> ace of base 
     if(!process.argv[3] && !song) {
-        songName = 'The Sign Ace of Base';
+        songName = 'The Sign, Ace of Base';
     //if a song is passed in without command (through txt file)
     } else if(song && !process.argv[3]) {
         songName = song;
@@ -169,9 +169,12 @@ request(url, function(error, res, body){
     *Country:                   ${bodObj.Country}
     *Language:                  ${bodObj.Language}
     *Plot:                      ${bodObj.Plot}
-    *Actors:                    ${bodObj.Actors}`;
+    *Actors:                    ${bodObj.Actors}
+
+    \n`;
    
-    let movieHead = `=============================   "${command}" : ${movieName}   ============================
+    let movieHead = `    
+===============================   ${command} : ${movieName}   =============================
     `;
     movieResults = movieHead + movieResults;
      console.log(movieResults);
@@ -191,8 +194,10 @@ request(url, function(error, res, body){
     *Country:                   ${bodObj.Country}
     *Language:                  ${bodObj.Language}
     *Plot:                      ${bodObj.Plot}
-    *Actors:                    ${bodObj.Actors}`;
-    let movieHead = `===============================   ${command} : ${movieName}   =============================
+    *Actors:                    ${bodObj.Actors}
+    `;
+    let movieHead = `
+===============================   ${command} : ${movieName}   =============================
     `;
     movieResults = movieHead + movieResults;
     console.log(movieResults);
