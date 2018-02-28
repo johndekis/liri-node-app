@@ -24,9 +24,29 @@ function getTweets() {
         if (error) {
           console.log(error);
         } else {
+            var tweetHead = `
+===============================   ${command} : ${params.screen_name}   =============================
+            `
+        console.log(tweetHead);
+        fs.appendFile("log.txt", tweetHead, function(error) {
+            if(error) {
+                throw error;
+            }
+        });
         for(var i=0; i<5; i++) {
-            console.log("*'" + tweets[i].text + "'");
-            console.log("--" + tweets[i].user.screen_name + ", " + tweets[i].created_at);
+            var time = tweets[i].created_at;
+            var timeFix = time.split(' ').slice(0,4).join(' ') + "\n";
+
+            var tweetResults = "\n' " + tweets[i].text + " '  " + "\n--" + tweets[i].user.screen_name + ", " + timeFix;
+            
+            
+            console.log(tweetResults);
+            fs.appendFile("log.txt", tweetResults, function(error) {
+                if(error) {
+                    throw error;
+                }
+            });
+            
             }
         }
       });
@@ -71,37 +91,52 @@ function getSong(song) {
         if(error) {
             console.log(error);
     } else {
-        console.log(`
+        var songHead =`
+===============================   ${command} : ${songName}   =============================
+        `; 
+        if(info.preview_url === null){
+         let songResults = `
     *Artist:    ${info.artists[0].name}
     *Track:     ${info.name}    
-    *Album:     ${info.album.name}`);
+    *Album:     ${info.album.name}
+    *Link:      ${info.external_urls.spotify}
+    `;  
+    songResults = songHead + songResults;
+    console.log(songResults);
+    fs.appendFile("log.txt", songResults, function(error){
+        if(error){
+            console.log("ERROR");
+            throw error;
+        }
+    });
+        } else {
+        let songResults = `
+    *Artist:    ${info.artists[0].name}
+    *Track:     ${info.name}    
+    *Album:     ${info.album.name}
+    *URL:       ${info.preview_url}
+    `; 
+    songResults = songHead + songResults;
+    console.log(songResults);
+    fs.appendFile("log.txt", songResults, function(error){
+        if(error){
+            console.log("ERROR");
+            throw error;
+        }
+    });  
+        
+            }
 
-           if(info.preview_url === null) {                                 
-            console.log(`    *Link:      ${info.external_urls.spotify}`); 
-           } else { 
-            console.log(`    *URL:       ${info.preview_url}`);
-           }
            
         }
 
     });
-    
-    request('url', function(error, res, body){
-        if(error){console.log("Error: " + error);} else {
-            console.log("statusCode: " + res.statusCode);
-            console.log(body);
-        }
-
-    });
+ 
 }
-
-
-
-
 
 //===============================     OMDB        =========================================
 function getMovie() {
-    
+           
     var movieName ="";
     for (var i = 3; i < nodeArgs.length; i++) {
         if (i > 3 && i < nodeArgs.length) {
@@ -115,16 +150,17 @@ function getMovie() {
 
     var url = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
     
-    request(url, function(error, res, body){
-        if(error){
+request(url, function(error, res, body){
+    if(error){
             console.log("Error: " + error);
     } else {
             console.log("statusCode: " + res.statusCode);
             var bodObj = JSON.parse(body);
            
-            if(!bodObj.Ratings[1]) {
+        if(!bodObj.Ratings[1]) {
 
-                console.log(`
+           
+            let movieResults = `
     *Title:                     ${bodObj.Title}
     *Release Year:              ${bodObj.Year}
     *IMDB Rating:               ${bodObj.imdbRating}
@@ -132,10 +168,21 @@ function getMovie() {
     *Country:                   ${bodObj.Country}
     *Language:                  ${bodObj.Language}
     *Plot:                      ${bodObj.Plot}
-    *Actors:                    ${bodObj.Actors}`);
+    *Actors:                    ${bodObj.Actors}`;
+   
+    let movieHead = `=============================   "${command}" : ${movieName}   ============================
+    `;
+    movieResults = movieHead + movieResults;
+     console.log(movieResults);
+    fs.appendFile("log.txt", movieResults, function(error){
+        if(error){
+            console.log("ERROR");
+            throw error;
+        }
+    });
   
-            } else if(bodObj.Ratings[1].Value){
-                console.log(`
+        } else if(bodObj.Ratings[1].Value){
+            let movieResults = `
     *Title:                     ${bodObj.Title}
     *Release Year:              ${bodObj.Year}
     *IMDB Rating:               ${bodObj.imdbRating}
@@ -143,10 +190,23 @@ function getMovie() {
     *Country:                   ${bodObj.Country}
     *Language:                  ${bodObj.Language}
     *Plot:                      ${bodObj.Plot}
-    *Actors:                    ${bodObj.Actors}`);
-            }
+    *Actors:                    ${bodObj.Actors}`;
+    let movieHead = `===============================   ${command} : ${movieName}   =============================
+    `;
+    movieResults = movieHead + movieResults;
+    console.log(movieResults);
+    fs.appendFile("log.txt", movieResults, function(error){
+        if(error){
+            console.log("ERROR");
+            throw error;
         }
     });
+        }
+
+    }
+});
+
+    
 }
 
 
@@ -168,9 +228,11 @@ function doTxt() {
             command = dataArr[0];
             song = dataArr[1].replace(/["]+/g, '');
             getSong(song);
-        }
+            
+        } 
  
     });
+    
     
 }
 

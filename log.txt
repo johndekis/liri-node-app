@@ -1,0 +1,33 @@
+===============================   movie-this : mr nobody   =============================
+    
+    *Title:                     Mr. Nobody
+    *Release Year:              2009
+    *IMDB Rating:               7.9
+    *Rotten Tomatoes Rating:    66%
+    *Country:                   Belgium, Germany, Canada, France, USA, UK
+    *Language:                  English, Mohawk
+    *Plot:                      A boy stands on a station platform as a train is about to leave. Should he go with his mother or stay with his father? Infinite possibilities arise from this decision. As long as he doesn't choose, anything is possible.
+    *Actors:                    Jared Leto, Sarah Polley, Diane Kruger, Linh Dan Pham
+===============================   spotify-this-song : The Sign Ace of Base   =============================
+        
+    *Artist:    Ace of Base
+    *Track:     The Sign    
+    *Album:     The Sign (US Album) [Remastered]
+    *URL:       https://p.scdn.co/mp3-preview/4c463359f67dd3546db7294d236dd0ae991882ff?cid=943af40c8ac84862939bc322cb682705
+    
+===============================   my-tweets : theNodest   =============================
+            
+' finishing up LIRI app, still need more tweets to display '  
+--theNodest, Wed Feb 28 15:42:55
+
+' command line node app today. '  
+--theNodest, Wed Feb 28 13:56:22
+
+' working on programming hw... '  
+--theNodest, Wed Feb 28 13:56:03
+
+' tweet 3 '  
+--theNodest, Wed Feb 28 13:55:51
+
+' Gotta rack up the tweets '  
+--theNodest, Mon Feb 26 20:17:18
