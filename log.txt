@@ -31,3 +31,20 @@
 
 ' Gotta rack up the tweets '  
 --theNodest, Mon Feb 26 20:17:18
+
+===============================   spotify-this-song : superman   =============================
+        
+    *Artist:    Eminem
+    *Track:     Superman    
+    *Album:     The Eminem Show (Explicit Version)
+    *Link:      https://open.spotify.com/track/4woTEX1wYOTGDqNXuavlRC
+    ===============================   movie-this : superbad   =============================
+    
+    *Title:                     Superbad
+    *Release Year:              2007
+    *IMDB Rating:               7.6
+    *Rotten Tomatoes Rating:    87%
+    *Country:                   USA
+    *Language:                  English
+    *Plot:                      Two co-dependent high school seniors are forced to deal with separation anxiety after their plan to stage a booze-soaked party goes awry.
+    *Actors:                    Jonah Hill, Michael Cera, Christopher Mintz-Plasse, Bill Hader

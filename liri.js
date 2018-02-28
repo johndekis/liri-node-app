@@ -33,6 +33,7 @@ function getTweets() {
                 throw error;
             }
         });
+        // working on tweeting more tweets, but i will change this loop to i<20
         for(var i=0; i<5; i++) {
             var time = tweets[i].created_at;
             var timeFix = time.split(' ').slice(0,4).join(' ') + "\n";
