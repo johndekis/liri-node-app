@@ -16,5 +16,12 @@
   "bugs": {
     "url": "https://github.com/johndekis/liri-node-app/issues"
   },
-  "homepage": "https://github.com/johndekis/liri-node-app#readme"
+  "homepage": "https://github.com/johndekis/liri-node-app#readme",
+  "dependencies": {
+    "env": "0.0.2",
+    "node-spotify-api": "^1.0.7",
+    "request": "^2.83.0",
+    "spotify": "^0.3.0",
+    "twitter": "^1.7.1"
+  }
 }
