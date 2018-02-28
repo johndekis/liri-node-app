@@ -76,7 +76,7 @@ function getSong(song) {
     *Track:     ${info.name}    
     *Album:     ${info.album.name}`);
 
-           if(info.preview_url === null) {                                  //if there is no preview url
+           if(info.preview_url === null) {                                 
             console.log(`    *Link:      ${info.external_urls.spotify}`); 
            } else { 
             console.log(`    *URL:       ${info.preview_url}`);
